@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PierresAnimalShelter.Models;
 
 namespace PierresAnimalShelter.Controllers
@@ -35,6 +36,13 @@ namespace PierresAnimalShelter.Controllers
         public void Post([FromBody] Animal animal)
         {
             _db.Animals.Add(animal);
+            _db.SaveChanges();
+        }
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            var animalToDelete = _db.Animals.FirstOrDefault(entry => entry.AnimalId == id);
+            _db.Animals.Remove(animalToDelete);
             _db.SaveChanges();
         }
     }
