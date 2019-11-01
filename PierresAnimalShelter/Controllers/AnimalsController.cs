@@ -19,6 +19,11 @@ namespace PierresAnimalShelter.Controllers
         {
             return _db.Animals.ToList();
         }
+        [HttpGet("{id}")]
+        public ActionResult<Animal> Get(int id)
+        {
+            return _db.Animals.FirstOrDefault(entry => entry.AnimalId == id);
+        }
         [HttpPost]
         public void Post([FromBody] Animal animal)
         {
