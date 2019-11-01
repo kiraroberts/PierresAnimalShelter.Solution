@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PierresAnimalShelter.Models;
 
 namespace PierresAnimalShelter
 {

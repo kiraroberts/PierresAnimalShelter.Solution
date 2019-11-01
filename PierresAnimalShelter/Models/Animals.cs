@@ -1,4 +1,4 @@
-namespace PierresAnimalShelter
+namespace PierresAnimalShelter.Models
 {
     public class Animal
     {
