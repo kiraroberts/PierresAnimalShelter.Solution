@@ -24,6 +24,13 @@ namespace PierresAnimalShelter.Controllers
         {
             return _db.Animals.FirstOrDefault(entry => entry.AnimalId == id);
         }
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] Animal animal)
+        {
+            animal.AnimalId = id;
+            _db.Entry(animal).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _db.SaveChanges();
+        }
         [HttpPost]
         public void Post([FromBody] Animal animal)
         {
