@@ -15,6 +15,7 @@ namespace PierresAnimalShelter.Controllers
         {
             _db = db;
         }
+        
         [HttpGet]
         public ActionResult<IEnumerable<Animal>> Get(string species, string gender, string name)
         {
@@ -37,11 +38,13 @@ namespace PierresAnimalShelter.Controllers
 
             return query.ToList();
         }
+
         [HttpGet("{id}")]
         public ActionResult<Animal> Get(int id)
         {
             return _db.Animals.FirstOrDefault(entry => entry.AnimalId == id);
         }
+
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] Animal animal)
         {
@@ -49,12 +52,14 @@ namespace PierresAnimalShelter.Controllers
             _db.Entry(animal).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _db.SaveChanges();
         }
+        
         [HttpPost]
         public void Post([FromBody] Animal animal)
         {
             _db.Animals.Add(animal);
             _db.SaveChanges();
         }
+        
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
